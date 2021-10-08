@@ -1,6 +1,8 @@
 # open-backlog-issue.vim
 Open Backlog issue from vim.
 
+![Sample](https://github.com/mmktomato/open-backlog-issue.vim/raw/main/readme-docs/top.gif)
+
 # Dependencies
 * Vim 8.1 or higher.
 * [tyru/open-browser.vim](https://github.com/tyru/open-browser.vim) .
