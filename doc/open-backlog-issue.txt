@@ -1,0 +1,61 @@
+*open-backlog-issue.txt*
+
+Author: mmktomato
+License: See LICENSE file.
+
+==============================================================================
+CONTENTS                                         *open-backlog-issue-contents*
+
+Introduction         |open-backlog-issue-introduction|
+Dependencies         |open-backlog-issue-dependencies|
+Variables            |open-backlog-issue-preferences|
+Commands             |open-backlog-issue-commands|
+Mappings             |open-backlog-issue-mappings|
+
+==============================================================================
+INTRODUCTION                                 *open-backlog-issue-introduction*
+
+Open Backlog issue from vim.
+
+==============================================================================
+DEPENDENCIES                                 *open-backlog-issue-dependencies*
+
+* tyru/open-browser.vim
+  https://github.com/tyru/open-browser.vim
+
+==============================================================================
+VARIABLES                                       *open-backlog-issue-variables*
+
+g:open_backlog_issue_prefix                      *g:open_backlog_issue_prefix*
+
+  Set your Backlog's URL prefix.
+
+  e.g.
+    let g:open_backlog_issue_prefix = 'https://mybacklog.backlog.com'
+
+==============================================================================
+COMMANDS                                         *open-backlog-issue-commands*
+
+:OpenBacklogIssue                                          *:OpenBacklogIssue*
+
+  When you run this command on the Backlog's issue key under the caret,
+  Backlog's issue page will open in your default web browser.
+
+  e.g.
+    If you have a text "MY_PROJ-1234" and your caret is between first "M" and
+    last "4", then you run this command,
+    "https://mybacklog.backlog.com/view/MY_PROJ-1234" will open in your
+    default web browser.
+
+==============================================================================
+MAPPINGS                                         *open-backlog-issue-mappings*
+
+<Plug>(open-backlog-issue)        *open-backlog-issue-plug-open-backlog-issue*
+
+  Run |:OpenBacklogIssue| . You can set your own key mapping to this.
+
+  e.g.
+    nmap gbx <Plug>(open-backlog-issue)
+
+==============================================================================
+vim:ft=help:et:ts=2:sw=2:sts=2:norl
