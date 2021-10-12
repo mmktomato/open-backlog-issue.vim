@@ -24,6 +24,11 @@ function! s:warn(msg) abort
 endfunction
 
 function! backlog#issue#open() abort
+    if globpath(&rtp, 'plugin/openbrowser.vim') == ''
+        call s:warn('You have to install open-browser.vim. See help or README.md.')
+        return
+    endif
+
     if g:open_backlog_issue_prefix == ''
         call s:warn('g:open_backlog_issue_prefix is not set')
         return
