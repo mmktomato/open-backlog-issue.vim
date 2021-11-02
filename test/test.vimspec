@@ -1,0 +1,64 @@
+let s:expect = themis#helper('expect')
+let s:scope = themis#helper('scope')
+let s:functions = s:scope.funcs('autoload/backlog/issue.vim')
+
+describe open-backlog-issue
+    context (caret position)
+        it should find issue key (head)
+            let res = s:functions.find_backlog_issue_key('TEST-1', 0)
+            call s:expect(res).to_equal('TEST-1')
+        end
+
+        it should find issue key (tail)
+            let res = s:functions.find_backlog_issue_key('TEST-1', 5)
+            call s:expect(res).to_equal('TEST-1')
+        end
+
+        it should not find issue key (head)
+            let res = s:functions.find_backlog_issue_key(' TEST-1', 0)
+            call s:expect(res).to_equal('')
+        end
+
+        it should not find issue key (tail)
+            let res = s:functions.find_backlog_issue_key('TEST-1 ', 6)
+            call s:expect(res).to_equal('')
+        end
+
+        it should find issue key of caret posision (first)
+            let res = s:functions.find_backlog_issue_key('TEST-1 TEST-2', 2)
+            call s:expect(res).to_equal('TEST-1')
+        end
+
+        it should find issue key of caret posision (second)
+            let res = s:functions.find_backlog_issue_key('TEST-1 TEST-2', 8)
+            call s:expect(res).to_equal('TEST-2')
+        end
+    end
+
+    context (issue key format)
+        it 'TEST-1' is a issue key
+            let res = s:functions.find_backlog_issue_key('TEST-1', 0)
+            call s:expect(res).to_equal('TEST-1')
+        end
+
+        it 'aaa' is not a issue key
+            let res = s:functions.find_backlog_issue_key('aaa', 0)
+            call s:expect(res).to_equal('')
+        end
+
+        it 'TE_ST-1' is a issue key
+            let res = s:functions.find_backlog_issue_key('TE_ST-1', 0)
+            call s:expect(res).to_equal('TE_ST-1')
+        end
+
+        it '111-1' is not a issue key
+            let res = s:functions.find_backlog_issue_key('111-1', 0)
+            call s:expect(res).to_equal('')
+        end
+
+        it 'TEST-T' is not a issue key
+            let res = s:functions.find_backlog_issue_key('TEST-T', 0)
+            call s:expect(res).to_equal('')
+        end
+    end
+end

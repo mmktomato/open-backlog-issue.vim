@@ -37,5 +37,15 @@ Plug 'mmktomato/open-backlog-issue.vim'
 
 Then `:PlugInstall`.
 
+# Development
+## Unit test
+Install [thinca/vim-themis](https://github.com/thinca/vim-themis) . Then run:
+
+```
+/path/to/vim-themis/bin/themis test/test.vimspec
+```
+
+Make sure all tests pass.
+
 # License
 MIT
